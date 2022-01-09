@@ -28,6 +28,8 @@ def getAdj(type):
         return random.choice([line.rstrip('\n') for line in open('adjectives/1syllableadjectives.txt')])
     elif type == 2:
         return random.choice([line.rstrip('\n') for line in open('adjectives/2syllableadjectives.txt')])
+    elif type == 3:
+        return random.choice([line.rstrip('\n') for line in open('adjectives/3syllableadjectives.txt')])
 
 # return random adverb 
 def getAdv():
@@ -50,10 +52,11 @@ def getArticle(string):
     else:
         return "a"
 
-adj = getAdj(2)
+post = "The " + getAdj(3) + " " + getNoun(1) + "\n"
+post += getVerb(2) + " like " + getAdj(2) + " " + getNoun(0) + ".\n"
+post += "It " + getVerb(2) + " " + getAdv(2) + "."
 
-post = getAdj(3).capitalize() + " " + getNoun(2) + ",\n"
-post += getVerb(2) + " towards " + getNoun(0) + " and " + "\n"
-post += getAdv() + " " + getVerb(1) + " away."
+api.update_status(status=post)
+
 
 api.update_status(status=post)
