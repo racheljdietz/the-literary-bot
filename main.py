@@ -52,8 +52,18 @@ def getArticle(string):
     else:
         return "a"
 
-post = "The " + getAdj(3) + " " + getNoun(1) + "\n"
-post += getVerb(2) + " like " + getAdj(2) + " " + getNoun(0) + ".\n"
-post += "It " + getVerb(2) + " " + getAdv() + "."
+# choose haiku style
+haiku = random.randrange(0,2)
+
+if haiku == 0:
+    post = "The " + getAdj(3) + " " + getNoun(1) + "\n"
+    post += getVerb(2) + " like " + getAdj(2) + " " + getNoun(0) + ".\n"
+    post += "It " + getVerb(2) + " " + getAdv() + "."
+else:
+    adj = getAdj(2)
+
+    post = getArticle(adj).capitalize() + " "  + adj + " " + getNoun(0) + "\n"
+    post += getVerb(2) + " a " + getAdj(2) + " " + getNoun(0) + ".\n"
+    post += "It " + getVerb(2) + " " + getAdv() + "."
 
 api.update_status(status=post)
