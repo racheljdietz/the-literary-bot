@@ -54,9 +54,6 @@ def getArticle(string):
 
 post = "The " + getAdj(3) + " " + getNoun(1) + "\n"
 post += getVerb(2) + " like " + getAdj(2) + " " + getNoun(0) + ".\n"
-post += "It " + getVerb(2) + " " + getAdv(2) + "."
-
-api.update_status(status=post)
-
+post += "It " + getVerb(2) + " " + getAdv() + "."
 
 api.update_status(status=post)
